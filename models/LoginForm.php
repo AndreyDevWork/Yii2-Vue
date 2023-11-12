@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\modules\api\resources\UserResource;
 use Yii;
 use yii\base\Model;
 
@@ -17,7 +18,7 @@ class LoginForm extends Model
     public $password;
     public $rememberMe = true;
 
-    private $_user = false;
+    protected $_user = false;
 
 
     /**
