@@ -56,6 +56,7 @@ export default {
 
 <style lang="scss" scoped>
   .tc-notes-wrapper {
+    padding-top: 70px;
     .ts-notes {
       display: flex;
       justify-content: center;

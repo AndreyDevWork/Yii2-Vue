@@ -17,6 +17,8 @@
 
 <script>
 
+import axios from "axios";
+
 export default {
   name: 'Login',
   data() {
@@ -29,8 +31,13 @@ export default {
     }
   },
   methods: {
-    login() {
-      console.log('login', this.form)
+    async login() {
+      try {
+        const {status, data} = await axios.post('http://rest/api/user/login', this.form);
+        console.log(status, data);
+      } catch (e) {
+        this.errors = e.response.data.errors;
+      }
     }
   }
 }

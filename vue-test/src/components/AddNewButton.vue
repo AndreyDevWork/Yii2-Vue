@@ -15,6 +15,7 @@ export default {
 
 <style lang="scss" scoped>
   .new-note-btn {
+    color: black;
     width: 200px;
     display: block;
     margin: 0 auto 20px;
