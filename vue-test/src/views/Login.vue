@@ -17,7 +17,8 @@
 
 <script>
 
-import axios from "axios";
+
+import authService from "../services/auth_service.js";
 
 export default {
   name: 'Login',
@@ -32,11 +33,11 @@ export default {
   },
   methods: {
     async login() {
-      try {
-        const {status, data} = await axios.post('http://rest/api/user/login', this.form);
-        console.log(status, data);
-      } catch (e) {
-        this.errors = e.response.data.errors;
+      const {success, errors} = await authService.login(this.form);
+      if(success) {
+        this.$router.push({name: 'home'});
+      } else {
+        this.errors = errors;
       }
     }
   }
