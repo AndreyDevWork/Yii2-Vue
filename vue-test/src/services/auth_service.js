@@ -1,5 +1,4 @@
 import axios from "axios";
-
 const authService = {
     user: null,
     async login(formData) {
@@ -29,6 +28,10 @@ const authService = {
 
     getToken() {
         return localStorage.getItem('ACCESS_TOKEN');
+    },
+
+    logout() {
+        localStorage.removeItem('ACCESS_TOKEN');
     }
 }
 

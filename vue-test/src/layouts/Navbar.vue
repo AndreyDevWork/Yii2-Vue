@@ -1,11 +1,14 @@
 <template>
   <div class="navbar">
     Welcome {{user.username}}
-    <a href="" @click="logout">Logout</a>
+    <div class="link" href="" @click="logout">Logout</div>
   </div>
 </template>
 
 <script>
+import authService from "../services/auth_service.js";
+import router from "../router/router.js";
+
 export default {
   name: "Navbar",
   props: {
@@ -13,7 +16,8 @@ export default {
   },
   methods: {
     logout() {
-      console.log("logout")
+      authService.logout();
+      router.push({name: 'login'})
     }
   }
 }
@@ -32,8 +36,10 @@ export default {
     padding: 0 15px;
     text-align: right;
     transition: font-weight 0.3s;
-    a{
+    .link{
       color: #FFF;
+      cursor: pointer;
+      display: inline;
       &:hover{
         font-weight: bold;
       }
