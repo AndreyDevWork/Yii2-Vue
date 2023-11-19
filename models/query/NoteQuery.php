@@ -31,4 +31,8 @@ class NoteQuery extends \yii\db\ActiveQuery
     {
         return parent::one($db);
     }
+
+    public function byUser($id) {
+        return $this->andWhere(['created_by' => $id]);
+    }
 }
