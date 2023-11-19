@@ -53,7 +53,6 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-    console.log(to, from);
     if(to.name === 'home' && !authService.isLoggedIn()) {
         next({name: 'login'});
     } else if (authService.isLoggedIn() && to.name !== 'home') {
