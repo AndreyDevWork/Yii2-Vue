@@ -19,6 +19,7 @@ class NoteController extends ActiveController
         $behaviors['authenticator']['authMethods'] = [
             HttpBearerAuth::class
         ];
+
         $behaviors['authenticator']['except'] = ['options'];
         $behaviors['cors'] = [
             'class' => Cors::class

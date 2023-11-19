@@ -16,14 +16,23 @@ export default {
   components: {Note, AddNewButton},
   name: "Notes",
   methods: {
-    deleteNote(note) {
-      this.notes.splice(this.notes.indexOf(note), 1);
+    async deleteNote(note) {
+      const {status, data} = await httpClient.delete(`note/${note.id}`);
+      if(status === 204) {
+        this.notes.splice(this.notes.indexOf(note), 1);
+      }
     },
-    addNote() {
-      this.notes.unshift({title: '', body: ''});
+    async addNote() {
+      const {status, data} = await httpClient.post('note', {});
+      if(status === 201) {
+        this.notes.unshift(data);
+      }
     },
-    noteUpdated(note) {
-      console.log(note);
+    async noteUpdated(note) {
+      const {status, data} = await httpClient.put(`note/${note.id}`, note);
+      if(status === 200) {
+
+      }
     },
   },
   async mounted() {
