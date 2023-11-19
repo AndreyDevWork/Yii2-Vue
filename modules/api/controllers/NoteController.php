@@ -3,10 +3,12 @@
 namespace app\modules\api\controllers;
 
 use app\modules\api\resources\NoteResource;
+use app\modules\api\resources\UserResource;
 use yii\data\ActiveDataProvider;
 use yii\filters\auth\HttpBearerAuth;
 use yii\filters\Cors;
 use yii\rest\ActiveController;
+use yii\web\UnauthorizedHttpException;
 
 class NoteController extends ActiveController
 {
@@ -42,5 +44,4 @@ class NoteController extends ActiveController
             'query' => $this->modelClass::find()->byUser(\Yii::$app->user->id)
         ]);
     }
-
 }

@@ -8,6 +8,7 @@
 
 <script>
 import Navbar from "./Navbar.vue";
+import authService from "../services/auth_service.js";
 
 export default {
   name: "DefaultLayouts",
@@ -16,6 +17,9 @@ export default {
     return {
       user: {}
     }
+  },
+  async beforeMount() {
+    this.user = await authService.getCurrentUser();
   }
 }
 </script>
